@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2da897cabe3d8a4da5428c4fa8c7a37, type: 3}
+  m_Name: Player
+  m_EditorClassIdentifier: 
+  Sequences:
+  - Track: 0
+    Sprites:
+    - {fileID: 21300000, guid: 84ce2f114ad12bd4ebafc77060220324, type: 3}
+    - {fileID: 21300000, guid: e70ab950968e2ef439f986ec395141c6, type: 3}
+    - {fileID: 21300000, guid: 754f43f8fc4997f42b16428846136321, type: 3}
+    - {fileID: 21300000, guid: 7425003c38c00d144af86a40ba87c12d, type: 3}
+    - {fileID: 21300000, guid: 4a643494bdea168479e8de8698775b85, type: 3}
+    - {fileID: 21300000, guid: d0fc8c27bd2d9d44e88e8a240ad8f68f, type: 3}
