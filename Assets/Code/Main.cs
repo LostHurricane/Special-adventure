@@ -11,17 +11,13 @@ namespace SpecialAdventure
 
         private SpriteAnimator _spriteAnimator;
 
-        // Start is called before the first frame update
         void Start()
         {
             _spriteAnimator = new SpriteAnimator(_data.GetAnimationConfig(InteractiveObjectType.Player));
 
             _spriteAnimator.StartAnimation(GetComponent<SpriteRenderer>(), AnimStatePlayer.Idle, true, 7);
-
-
         }
 
-        // Update is called once per frame
         void Update()
         {
             _spriteAnimator.Execute(Time.deltaTime);
