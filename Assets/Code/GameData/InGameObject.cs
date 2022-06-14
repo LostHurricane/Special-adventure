@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace SpecialAdventure
 {
+    [CreateAssetMenu(fileName = "InGameObject", menuName = "Configs /InGameObject", order = 0)]
     public class InGameObject : ScriptableObject
     {
         [SerializeField]

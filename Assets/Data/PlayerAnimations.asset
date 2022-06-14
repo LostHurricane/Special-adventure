@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2da897cabe3d8a4da5428c4fa8c7a37, type: 3}
-  m_Name: Player
+  m_Name: PlayerAnimations
   m_EditorClassIdentifier: 
   Sequences:
   - Track: 0
@@ -21,3 +21,15 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 7425003c38c00d144af86a40ba87c12d, type: 3}
     - {fileID: 21300000, guid: 4a643494bdea168479e8de8698775b85, type: 3}
     - {fileID: 21300000, guid: d0fc8c27bd2d9d44e88e8a240ad8f68f, type: 3}
+  - Track: 1
+    Sprites:
+    - {fileID: 21300000, guid: 4a587e1c913636f4c812f857e5aa6c84, type: 3}
+    - {fileID: 21300000, guid: c9c8166c52da6634eb2eaee5eb18d77a, type: 3}
+    - {fileID: 21300000, guid: bde3991f219560149aecb109a8aea6b3, type: 3}
+    - {fileID: 21300000, guid: 5f35e0dbf73e2bd4bb8189fcd03962b3, type: 3}
+    - {fileID: 21300000, guid: 950268a606733494f8e4b356b0100a41, type: 3}
+    - {fileID: 21300000, guid: 969fce9da2f69834182f5618b7ec2975, type: 3}
+  - Track: 2
+    Sprites:
+    - {fileID: 21300000, guid: 7aa182603b724964d971bbfdfa1d309d, type: 3}
+    - {fileID: 21300000, guid: 355f117cc929dbb43875dd51720e2e64, type: 3}

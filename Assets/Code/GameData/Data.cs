@@ -9,11 +9,19 @@ namespace SpecialAdventure
     public class Data : ScriptableObject
     {
         [SerializeField]
-        private List<AnimationSet> animationSets;
+        private List<AnimationSet> _animationSets;
+        
+        [SerializeField]
+        private List<ObjectPrefab> _prefabs;
 
         public SpriteAnimatorConfig GetAnimationConfig(InteractiveObjectType type)
         {
-            return animationSets.Find(animationSet => animationSet.Type == type).animatorConfig;
+            return _animationSets.Find(animationSet => animationSet.Type == type).animatorConfig;
+        }
+
+        public T GetPrefab <T> (string name)
+        {
+            return _prefabs.Find(prefab => prefab.Name == name).Prefab.GetObject<T>();
         }
 
         [Serializable]
@@ -21,6 +29,13 @@ namespace SpecialAdventure
         {
             public InteractiveObjectType Type;
             public SpriteAnimatorConfig animatorConfig;
+        }
+
+        [Serializable]
+        private struct ObjectPrefab
+        {
+            public String Name;
+            public InGameObject Prefab;
         }
     }
        

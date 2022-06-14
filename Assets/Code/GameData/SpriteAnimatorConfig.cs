@@ -8,9 +8,6 @@ namespace SpecialAdventure
     [CreateAssetMenu (fileName = "SpriteAnimatorConfig", menuName = "Configs /Animator CFG", order = 0)]
     public class SpriteAnimatorConfig : ScriptableObject
     {
-        
-            
-
         public List<SpriteSequence> Sequences = new List<SpriteSequence>();
 
         [Serializable]
@@ -19,9 +16,6 @@ namespace SpecialAdventure
             public AnimStatePlayer Track;
             public List<Sprite> Sprites = new List<Sprite>();
         }
-
-
-
 
     }
 
