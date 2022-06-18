@@ -56,7 +56,6 @@ namespace SpecialAdventure
                 });
 
                 Debug.Log("aded new animation");
-
             }
         }
 
@@ -65,7 +64,6 @@ namespace SpecialAdventure
             if (_activeAnimation.TryGetValue(spriteRenderer, out var animation))
             {
                 animation.Sleep = true;
-                
             }
         }
 

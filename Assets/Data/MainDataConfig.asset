@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cf7233f266d78742b442e8ba5682bf4, type: 3}
   m_Name: MainDataConfig
   m_EditorClassIdentifier: 
-  animationSets:
+  _animationSets:
   - Type: 0
     animatorConfig: {fileID: 11400000, guid: 6c43f41fe0b790540b578e2890bd6b1f, type: 2}
+  _prefabs:
+  - Name: Player
+    Prefab: {fileID: 11400000, guid: 530011d601da24644888fd591c019655, type: 2}

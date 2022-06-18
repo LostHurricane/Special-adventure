@@ -6,25 +6,31 @@ namespace SpecialAdventure
 {
     public class Main : MonoBehaviour
     {
+        private Controllers _controllers;
+
         [SerializeField]
         private Data _data;
 
-        private SpriteAnimator _spriteAnimator;
 
-        // Start is called before the first frame update
+        
+
         void Start()
         {
-            _spriteAnimator = new SpriteAnimator(_data.GetAnimationConfig(InteractiveObjectType.Player));
+            _controllers = new Controllers();
+            new Initializer(_controllers, _data);
 
-            _spriteAnimator.StartAnimation(GetComponent<SpriteRenderer>(), AnimStatePlayer.Idle, true, 7);
-
-
+            _controllers.Initialization();
         }
 
-        // Update is called once per frame
         void Update()
         {
-            _spriteAnimator.Execute(Time.deltaTime);
+            _controllers.Execute(Time.deltaTime);
         }
+
+        private void FixedUpdate()
+        {
+            _controllers.FixedExecute(Time.deltaTime);
+        }
+
     }
 }
