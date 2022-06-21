@@ -26,10 +26,8 @@ namespace SpecialAdventure
 
         public override void Jump(float deltaTime)
         {
-
             if (_animationStateHub.CurrentState != AnimStatePlayer.Jump)
             {
-                Debug.Log(_animationStateHub.CurrentState);
                 _animationStateHub.SetState(AnimStatePlayer.Jump);
             }
             base.Jump(deltaTime);

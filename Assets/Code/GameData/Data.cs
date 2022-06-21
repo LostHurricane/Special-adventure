@@ -5,37 +5,22 @@ using UnityEngine;
 
 namespace SpecialAdventure
 {
-    [CreateAssetMenu(fileName = "MainDataConfig", menuName = "Configs/MainDataConfig")]
+    [CreateAssetMenu(fileName = "MainDataConfig", menuName = "Configs/Main Data Config")]
     public class Data : ScriptableObject
     {
         [SerializeField]
-        private List<AnimationSet> _animationSets;
-        
-        [SerializeField]
-        private List<ObjectPrefab> _prefabs;
+        private List<ObjectInfo> _interactiveObjects;
 
-        public SpriteAnimatorConfig GetAnimationConfig(InteractiveObjectType type)
+        public InteractiveObjectProperty GetObjectInfo(string name)
         {
-            return _animationSets.Find(animationSet => animationSet.Type == type).animatorConfig;
-        }
-
-        public T GetPrefab <T> (string name)
-        {
-            return _prefabs.Find(prefab => prefab.Name == name).Prefab.GetObject<T>();
+            return _interactiveObjects.Find(interactiveObject => interactiveObject.Name == name).Property;
         }
 
         [Serializable]
-        private struct AnimationSet
+        private struct ObjectInfo
         {
-            public InteractiveObjectType Type;
-            public SpriteAnimatorConfig animatorConfig;
-        }
-
-        [Serializable]
-        private struct ObjectPrefab
-        {
-            public String Name;
-            public InGameObject Prefab;
+            public string Name;
+            public InteractiveObjectProperty Property;
         }
     }
        

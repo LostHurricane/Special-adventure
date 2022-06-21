@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace SpecialAdventure
 {
-    public interface IView
+    public interface ICollider
     {
-        Transform transform { get; }
+        Collider2D Collider2D { get; }
     }
 }

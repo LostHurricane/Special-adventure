@@ -11,9 +11,7 @@ namespace SpecialAdventure
         [SerializeField]
         private Data _data;
 
-
-        
-
+       
         void Start()
         {
             _controllers = new Controllers();

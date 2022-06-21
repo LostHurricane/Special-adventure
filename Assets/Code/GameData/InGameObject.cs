@@ -12,12 +12,13 @@ namespace SpecialAdventure
 
         public GameObject GetObject()
         {
-            return _prefab;
+
+            return _prefab ? _prefab : null;
         }
 
         public T GetObject <T> ()
         {
-            return _prefab.GetComponent<T>();
+            return _prefab ? _prefab.GetComponent<T>() : default;
         }
     }
 }
