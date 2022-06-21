@@ -1,13 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace SpecialAdventure
 {
-    public class PlayerView : MonoBehaviour, IView, IRigidBody, ISpriteRenderer
+    public class PlayerView : MonoBehaviour, IView, IRigidBody, ISpriteRenderer, IActivator
     {
+        [SerializeField]
+        private Collider2D _collider2D;
+        public Collider2D Collider2D => _collider2D;
 
-        
         [SerializeField]
         private Rigidbody2D _rigidbody;
         public Rigidbody2D Rigidbody => _rigidbody;
@@ -16,18 +19,11 @@ namespace SpecialAdventure
         private SpriteRenderer _spriteRenderer;
         public SpriteRenderer SpriteRenderer => _spriteRenderer;
 
+        public Action<InteractiveObjectType> OnInteraction { get; set; } = delegate (InteractiveObjectType type) { Debug.Log($"Collected {type}"); };
 
-        public void Initialise ()
+        public void Interract(InteractiveObjectType interactiveObjectType)
         {
-            if (!_rigidbody)
-            {
-                _rigidbody = GetComponent<Rigidbody2D>();
-            }
-
-            if (!_spriteRenderer)
-            {
-                _spriteRenderer = GetComponent<SpriteRenderer>();
-            }
+            OnInteraction.Invoke(interactiveObjectType);
         }
     }
 }

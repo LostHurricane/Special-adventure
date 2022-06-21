@@ -6,11 +6,6 @@ namespace SpecialAdventure
 {
     public class PlayerController : IExecute, IFixedExecute
     {
-        private const float _jumpThresh = 0.1f;
-        private const float _movingThresh = 0.1f;
-
-        
-
         private PlayerView _playerView;
 
         private SpriteAnimator _spriteAnimator;
@@ -19,18 +14,20 @@ namespace SpecialAdventure
         private InputController _input;
         private PlayerMovementController _playerMovementController;
 
-        public PlayerController (Data data, InputController input)
+        public PlayerController (Data data, InputController input, out PlayerView player)
         {
             _input = input;
+            var playerInfo = data.GetObjectInfo("Player");
 
-            var playerPrototype = data.GetPrefab<PlayerView>("Player");
-            _playerView = new RegularFactory<PlayerView>(playerPrototype).GetNewObject();
+            var playerPrototype = playerInfo.GetPrefab <PlayerView> ();
+            _playerView = new RegularFactory<PlayerView>(playerPrototype).GetObject();
 
-            _spriteAnimator = new SpriteAnimator(data.GetAnimationConfig(InteractiveObjectType.Player));
+            _spriteAnimator = new SpriteAnimator(playerInfo.GetAnimatorConfig());
             _animationStateHub = new AnimationStateHub();
             
             _playerMovementController = new PlayerMovementController(input, _playerView, _animationStateHub);
 
+            player = _playerView;
         }
 
         public void Execute(float deltaTime)

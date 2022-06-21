@@ -17,19 +17,20 @@ namespace SpecialAdventure
         private bool _moveCommand;
 
         private InputController _inputController;
-        private Transform _playerTransform;
+        private PlayerView _playerView;
         private MovementManager _movementManager;
         private AnimationStateHub _animationStateHub;
+        private ContactsPoller _contactsPoller;
 
 
 
         public PlayerMovementController (InputController inputController, PlayerView view, AnimationStateHub animationStateHub)
         {
             _inputController = inputController;
-            _playerTransform = view.transform;
+            _playerView = view;
             _animationStateHub = animationStateHub;
-            _movementManager = new AnimatedMovementManager(new RigidBodyMove(view.Rigidbody, 50), new RigidBodyJump(view.Rigidbody, 1), _animationStateHub);
-
+            _movementManager = new AnimatedMovementManager(new RigidBodyMove(view.Rigidbody, 90), new RigidBodyJump(view.Rigidbody, 15), _animationStateHub);
+            _contactsPoller = new ContactsPoller(view.Collider2D);
         }
 
         public void Execute(float deltaTime)
@@ -37,13 +38,19 @@ namespace SpecialAdventure
             _goSideWay = _inputController.AxisHorizontal;
             _jumpCommand = _inputController.AxisVertical > _jumpThresh;
             _moveCommand = Mathf.Abs(_goSideWay) > _movingThresh;
+            _contactsPoller.Execute(deltaTime);
+
 
 
         }
 
         public void FixedExecute(float deltaTime)
         {
-            if (_jumpCommand)
+            if (!_contactsPoller.IsGrounded)
+            {
+                _animationStateHub.SetState(AnimStatePlayer.Jump);
+            }
+            else if (_jumpCommand )
             { 
                 _movementManager.Jump(deltaTime);
 
@@ -51,7 +58,7 @@ namespace SpecialAdventure
             else if (_moveCommand)
             {
                 _movementManager.Move(Vector3.right * (_goSideWay < 0 ? -1 : 1), deltaTime);
-                _playerTransform.localScale = (_goSideWay < 0 ? _leftScale : _rightScale);
+                _playerView.transform.localScale = (_goSideWay < 0 ? _leftScale : _rightScale);
             }
             else
                 _animationStateHub.SetState(AnimStatePlayer.Idle);

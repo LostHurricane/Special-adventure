@@ -9,10 +9,9 @@ namespace SpecialAdventure
         public Initializer(Controllers controllers, Data data)
         {
             controllers.Add(new InputController(out var inputController));
-            controllers.Add(new PlayerController(data, inputController));
-
-
-            
+            controllers.Add(new PlayerController(data, inputController, out var _player));
+            controllers.Add(new CameraController(_player.transform, new Vector3(0,0,-10), out var _camera));
+            controllers.Add(new CollectibleController(data));
 
         }
     }

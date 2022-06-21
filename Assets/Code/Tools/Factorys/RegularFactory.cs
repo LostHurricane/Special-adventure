@@ -13,7 +13,7 @@ namespace SpecialAdventure
             _example = example;
         }
 
-        public T GetNewObject()
+        public T GetObject()
         {
             var temp = Object.Instantiate(_example);
             return temp;

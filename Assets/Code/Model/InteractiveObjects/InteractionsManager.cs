@@ -4,8 +4,9 @@ using UnityEngine;
 
 namespace SpecialAdventure
 {
-    public interface IView
+    public class InteractionsManager
     {
-        Transform transform { get; }
+        
+        
     }
 }
