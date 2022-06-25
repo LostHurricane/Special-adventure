@@ -4,7 +4,8 @@ namespace SpecialAdventure
     {
         Player = 0,
         Enemy = 1,
-        Apple = 2
-        
+        Apple = 2,
+        Laser = 3
+
     }
 }
