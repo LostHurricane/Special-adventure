@@ -17,3 +17,5 @@ MonoBehaviour:
     Property: {fileID: 11400000, guid: 84fa15b309c32364a991a058ff80a155, type: 2}
   - Name: Apple
     Property: {fileID: 11400000, guid: d8f2a58a90d4e384fae48d6c7f063365, type: 2}
+  - Name: Background
+    Property: {fileID: 11400000, guid: 755206db3dd01ab4a9b521bb881ba6eb, type: 2}

@@ -13,6 +13,10 @@ namespace SpecialAdventure
         [SerializeField]
         private SpriteAnimatorConfig _spriteAnimatorConfig;
 
+        public GameObject GetPrefab()
+        {
+            return _inGameObject ? _inGameObject.GetObject() : default;
+        }
 
         public T GetPrefab<T>()
         {

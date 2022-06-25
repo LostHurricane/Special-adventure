@@ -14,6 +14,7 @@ namespace SpecialAdventure
             _offsetPosition = offsetPosition;
             _camera = new GameObject("Camera").AddComponent<Camera>(); 
             Camera.SetupCurrent(_camera);
+            _camera.orthographic = true;
             camera = _camera;
         }
 
