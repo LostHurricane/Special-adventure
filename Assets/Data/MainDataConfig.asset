@@ -19,3 +19,5 @@ MonoBehaviour:
     Property: {fileID: 11400000, guid: d8f2a58a90d4e384fae48d6c7f063365, type: 2}
   - Name: Background
     Property: {fileID: 11400000, guid: 755206db3dd01ab4a9b521bb881ba6eb, type: 2}
+  - Name: Enemy
+    Property: {fileID: 11400000, guid: 51e14f6635af3af44b1e89b03f41092d, type: 2}
