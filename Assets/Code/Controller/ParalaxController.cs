@@ -21,7 +21,7 @@ namespace SpecialAdventure
         public ParalaxController(Data data, Camera camera, float scrollingSpeed = 0.2f)
         {
             _camera = camera;
-            var prefab = data.GetObjectInfo("Background").GetPrefab();
+            var prefab = data.GetObjectInfo<InGameObject>("Background").GetObject();
             _scrollingSpeed = scrollingSpeed;
             _transform = Object.Instantiate(prefab, _camera.transform.position, Quaternion.identity).transform;
             _backgroundPart = new List<SpriteRenderer>();

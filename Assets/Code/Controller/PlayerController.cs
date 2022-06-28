@@ -17,7 +17,7 @@ namespace SpecialAdventure
         public PlayerController (Data data, InputController input, out PlayerView player)
         {
             _input = input;
-            var playerInfo = data.GetObjectInfo("Player");
+            var playerInfo = data.GetObjectInfo<InteractiveObjectProperty>("Player");
 
             var playerPrototype = playerInfo.GetPrefab <PlayerView> ();
             _playerView = new RegularFactory<PlayerView>(playerPrototype).GetObject();
