@@ -11,13 +11,18 @@ namespace SpecialAdventure
         [SerializeField]
         private Data _data;
 
-       
+        public AIConfig EnemysAI;
+
+        private EnemyController _ec;
+
         void Start()
         {
             _controllers = new Controllers();
             new Initializer(_controllers, _data);
 
             _controllers.Initialization();
+
+            _ec = new EnemyController(_data, EnemysAI);
         }
 
         void Update()
@@ -28,6 +33,8 @@ namespace SpecialAdventure
         private void FixedUpdate()
         {
             _controllers.FixedExecute(Time.deltaTime);
+
+            _ec.FixedExecute(Time.deltaTime);
         }
 
     }
