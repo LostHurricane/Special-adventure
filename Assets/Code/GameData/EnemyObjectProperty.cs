@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SpecialAdventure
 {
     [CreateAssetMenu(fileName = "EnemyObjectConfig", menuName = "Configs/Enemy Object Config")]
-    public class EnemyObjectProperty : InteractiveObjectProperty
+    public class EnemyObjectProperty : MultipleInteractiveObjectProperty
     {
 
         public AIConfig AIConfig;

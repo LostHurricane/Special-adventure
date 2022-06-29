@@ -571,13 +571,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: cb71aa32d659b2a4db5b017177da920b, type: 2}
   EnemysAI:
-    Speed: 30
+    Speed: 60
     MinDistanceToTarget: 0.1
     Waypoints:
-    - {fileID: 489710118}
-    - {fileID: 855251040}
-    - {fileID: 1088702934}
-    - {fileID: 2105686672}
+    - {x: 12, y: 1, z: 0}
+    - {x: 5, y: 0.5, z: 0}
+    - {x: -0.5, y: 5, z: 0}
+    - {x: 12, y: 5, z: 0}
 --- !u!1 &855251039
 GameObject:
   m_ObjectHideFlags: 0

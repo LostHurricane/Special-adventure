@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
+
 
 namespace SpecialAdventure
 {
-    public class EnemyController : IFixedExecute
+    public class EnemyController : IController, IFixedExecute
     {
         private IFactory<EnemyView> _factory;
 
@@ -12,7 +14,7 @@ namespace SpecialAdventure
 
         private EnemyView _enemy;
 
-        public EnemyController(Data data, AIConfig aIConfig)
+        public EnemyController(Data data)
         {
             var enemyData = data.GetObjectInfo<EnemyObjectProperty>("Enemy");
             var prototype = enemyData.GetPrefab<EnemyView>();
@@ -21,14 +23,16 @@ namespace SpecialAdventure
             
 
             _enemy = _factory.GetObject();
-            SetUpEnemy(_enemy, new Vector3( 4 , 3 , 0));
+            SetUpEnemy(_enemy, enemyData.Positions[0]);
 
-            _patrolModel = new SimplePatrolAI(_enemy, new SimplePatrolAIModel(aIConfig));
+            _patrolModel = new SimplePatrolAI(_enemy, new SimplePatrolAIModel(enemyData.AIConfig));
+
+            _enemy.GetComponent<AIDestinationSetter>().target = GameObject.Find("Player(Clone)").transform;
         }
 
         public void FixedExecute(float deltaTime)
         {
-            _patrolModel.FixedUpdate();
+            //_patrolModel.FixedUpdate();
         }
 
         private void SetUpEnemy (EnemyView enemy, Vector3 placement)

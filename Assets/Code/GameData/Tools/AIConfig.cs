@@ -9,6 +9,6 @@ namespace SpecialAdventure
         public float Speed;
         public float MinDistanceToTarget;
         //Vector3?
-        public Transform[] Waypoints;
+        public Vector3[] Waypoints;
     }
 }

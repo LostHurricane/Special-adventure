@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inGameObject: {fileID: 11400000, guid: f080ae69232975b47b6ba2ad2559510d, type: 2}
   _spriteAnimatorConfig: {fileID: 11400000, guid: fc354f3fcdb7e23408d8bd7bcfaa9163, type: 2}
+  _positions:
+  - {x: 4, y: 3, z: 0}
   AIConfig:
-    Speed: 0
-    MinDistanceToTarget: 0
-    Waypoints: []
+    Speed: 60
+    MinDistanceToTarget: 0.1
+    Waypoints:
+    - {x: 12, y: 1, z: 0}
+    - {x: 15, y: 0.5, z: 0}
+    - {x: -0.5, y: 5, z: 0}
+    - {x: 12, y: 5, z: 0}
