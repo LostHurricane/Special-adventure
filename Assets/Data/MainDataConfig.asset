@@ -18,4 +18,6 @@ MonoBehaviour:
   - Name: Apple
     Property: {fileID: 11400000, guid: d8f2a58a90d4e384fae48d6c7f063365, type: 2}
   - Name: Background
-    Property: {fileID: 11400000, guid: 755206db3dd01ab4a9b521bb881ba6eb, type: 2}
+    Property: {fileID: 11400000, guid: 4b953aa89443bcc40bd6178d4d847fa1, type: 2}
+  - Name: Enemy
+    Property: {fileID: 11400000, guid: 8556cbf4e2c9da74bb8bc5523db9b830, type: 2}

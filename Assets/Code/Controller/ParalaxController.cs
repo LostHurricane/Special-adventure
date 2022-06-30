@@ -7,23 +7,24 @@ namespace SpecialAdventure
 {
     public class ParalaxController : IExecute
     {
-        private float _ScrollingSpeed = 0.1f;
+        private float _scrollingSpeed;
 
         private Camera _camera;
         private Transform _transform;
-        private List<SpriteRenderer> backgroundPart;
+        private List<SpriteRenderer> _backgroundPart;
 
         private SpriteRenderer _firstChild;
         private SpriteRenderer _lastChild;
 
         private Vector3 _lastCamPosition;
 
-        public ParalaxController(Data data, Camera camera)
+        public ParalaxController(Data data, Camera camera, float scrollingSpeed = 0.2f)
         {
             _camera = camera;
-            var prefab = data.GetObjectInfo("Background").GetPrefab();
+            var prefab = data.GetObjectInfo<InGameObject>("Background").GetObject();
+            _scrollingSpeed = scrollingSpeed;
             _transform = Object.Instantiate(prefab, _camera.transform.position, Quaternion.identity).transform;
-            backgroundPart = new List<SpriteRenderer>();
+            _backgroundPart = new List<SpriteRenderer>();
 
             for (int i = 0; i < _transform.childCount; i++)
             {
@@ -31,7 +32,7 @@ namespace SpecialAdventure
 
                 if (child.TryGetComponent<SpriteRenderer>(out var renderer))
                 {
-                    backgroundPart.Add(renderer);
+                    _backgroundPart.Add(renderer);
                 }
             }
             SortChildren();
@@ -39,7 +40,7 @@ namespace SpecialAdventure
 
         public void Execute(float deltaTime)
         {
-            Vector3 movement = (_camera.transform.position - _lastCamPosition) * _ScrollingSpeed;
+            Vector3 movement = (_camera.transform.position - _lastCamPosition) * _scrollingSpeed;
 
             _transform.position = new Vector3(_transform.position.x, _camera.transform.position.y, _transform.position.z);
             _transform.Translate(movement);
@@ -68,9 +69,9 @@ namespace SpecialAdventure
 
         private void SortChildren()
         {
-            backgroundPart = backgroundPart.SortByDistance(_camera.transform.position);
-            _firstChild = backgroundPart.FirstOrDefault();
-            _lastChild = backgroundPart.LastOrDefault();
+            _backgroundPart = _backgroundPart.SortByDistance(_camera.transform.position);
+            _firstChild = _backgroundPart.FirstOrDefault();
+            _lastChild = _backgroundPart.LastOrDefault();
         }
 
 

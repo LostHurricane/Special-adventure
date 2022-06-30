@@ -11,13 +11,13 @@ namespace SpecialAdventure
         [SerializeField]
         private Data _data;
 
-       
         void Start()
         {
             _controllers = new Controllers();
             new Initializer(_controllers, _data);
 
             _controllers.Initialization();
+
         }
 
         void Update()
@@ -28,6 +28,7 @@ namespace SpecialAdventure
         private void FixedUpdate()
         {
             _controllers.FixedExecute(Time.deltaTime);
+
         }
 
     }

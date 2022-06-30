@@ -17,7 +17,7 @@ namespace SpecialAdventure
 
         public CollectibleController(Data data)
         {
-            var collectible = (MultipleInteractiveObjectProperty)data.GetObjectInfo("Apple");
+            var collectible = data.GetObjectInfo<MultipleInteractiveObjectProperty>("Apple");
 
             _spriteAnimator = new SpriteAnimator(collectible.GetAnimatorConfig());
             _collectiblePool = new PoolSystem<InteractiveObjectView>(new RegularFactory<InteractiveObjectView>(collectible.GetPrefab<InteractiveObjectView>()), 8, "CollectiblesPool");
