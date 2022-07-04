@@ -43,6 +43,11 @@ namespace SpecialAdventure
                 _levelGeneratorController.Start();
             }
 
+            if (GUI.Button(new Rect(30, 220, 60, 50), "Generate"))
+            {
+                _levelGeneratorController.Clean();
+            }
+            GUILayout.Space(100);
             serializedObject.ApplyModifiedProperties();
         }
     }

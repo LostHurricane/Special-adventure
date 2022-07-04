@@ -38,6 +38,14 @@ namespace SpecialAdventure
             GenerateLevel();
         }
 
+        public void Clean()
+        {
+            if (_tilemap != null)
+            {
+                _tilemap.ClearAllTiles();
+            }
+        }
+
         private void GenerateLevel()
         {
             RandomFillLevel();
