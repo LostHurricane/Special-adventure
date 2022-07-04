@@ -6,7 +6,7 @@ using Pathfinding;
 
 namespace SpecialAdventure
 {
-    public class EnemyController : IController, IFixedExecute
+    public class EnemyController : IController, ICleanup
     {
         //private SimplePatrolAI _patrolModel;
 
@@ -26,9 +26,6 @@ namespace SpecialAdventure
             
             SetUpEnemy(_enemy, enemyData.Positions[0]);
 
-            //_patrolModel = new SimplePatrolAI(_enemy, new SimplePatrolAIModel(enemyData.AIConfig));
-            //_enemy.GetComponent<AIDestinationSetter>().target =_playerView.transform;
-
             _protectorAI = new ProtectorAI(_enemy, new PatrolAIModel(enemyData.AIConfig.Waypoints), _enemy.GetComponent<AIDestinationSetter>(), _enemy.GetComponent<AIPatrolPath>());
             _protectorAI.Init();
 
@@ -36,14 +33,17 @@ namespace SpecialAdventure
             _protectedZone.Init();
         }
 
-        public void FixedExecute(float deltaTime)
-        {
-            //_patrolModel.FixedUpdate();
-        }
+     
 
         private void SetUpEnemy (EnemyView enemy, Vector3 placement)
         {
             enemy.transform.position = placement;
+        }
+
+        public void Cleanup()
+        {
+            _protectorAI.Deinit();
+            _protectedZone.Deinit();
         }
     }
 }

@@ -29,8 +29,6 @@ namespace SpecialAdventure
         public void Init()
         {
             _patrolPath.TargetReachedDetination += OnTargetReached;
-
-            Debug.Log(_model.GetNextTarget());
             _target.position = _model.GetNextTarget();
             _destinationSetter.target = _target;
             _isPatrolling = true;
@@ -46,7 +44,6 @@ namespace SpecialAdventure
         {
             _target.position = _isPatrolling ? _model.GetNextTarget() : _model.GetClosestTarget(_view.transform.position);
 
-            //_destinationSetter.target.position = _isPatrolling ? _model.GetNextTarget() : _model.GetClosestTarget(_view.transform.position);
         }
 
         public void StartProtection(GameObject invader)

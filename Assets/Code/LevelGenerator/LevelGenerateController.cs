@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -26,9 +27,10 @@ namespace SpecialAdventure
             _widthMap = levelGeneratorView.WidthMap;
             _heightMap = levelGeneratorView.HeightMap;
             _factorSmooth = levelGeneratorView.FactorSmooth;
-            _randomFillingPercent = levelGeneratorView.FactorSmooth;
+            _randomFillingPercent = levelGeneratorView.RandomFillingPercent;
 
             _map = new int[_widthMap, _heightMap];
+
         }
 
         public void Start ()
@@ -44,7 +46,9 @@ namespace SpecialAdventure
             {
                 SmoothMap();
             }
-            GeneratePlatforms();
+            
+            DrawTilesOnMap();
+
         }
 
         
@@ -58,12 +62,11 @@ namespace SpecialAdventure
                 for (var j = 0; j < _heightMap; j++)
                 {
                     _map[i, j] = (randomiser.Next(0, 100) < _randomFillingPercent) ? 1 : 0;
-                    
-
                 }
 
             }
         }
+
 
         private void SmoothMap()
         {
@@ -72,9 +75,13 @@ namespace SpecialAdventure
             {
                 for (var j = 0; j < _heightMap; j++)
                 {
-                    var neighbors = GetSurroundingPoints(i,j);
+                    var neighbors = GetSurroundingPoints(i, j, 1);
 
                     if (neighbors > COUNT_PLATFORMS)
+                    {
+                        _map[i, j] = 1;
+                    }
+                    else if (neighbors < COUNT_PLATFORMS)
                     {
                         _map[i, j] = 0;
                     }
@@ -84,17 +91,18 @@ namespace SpecialAdventure
 
         }
 
-        private int GetSurroundingPoints(int x, int y)
+        private int GetSurroundingPoints(int x, int y, int range = 5)
         {
             var pointCount = 0;
 
 
-            for (var i = x - 5 ; i <= x + 5; i++)
+            for (var i = x - range; i <= x + range; i++)
             {
-                for (var j = y - 5; j <= y + 5; j++)
+                for (var j = y - range; j <= y + range; j++)
                 {
-                    if (i >= 5 && i <= _widthMap - 5 && j >= 0 && j <= _heightMap - 5)
+                    if (i >= 0 && i < _widthMap && j >= 0 && j < _heightMap)
                     {
+
                         if (i != x || j != y)
                         {
                             pointCount += _map[i, j];
@@ -106,20 +114,34 @@ namespace SpecialAdventure
                     }
                 }
             }
-
+            Debug.Log(pointCount);
             return pointCount;
         }
 
-        private void GeneratePlatforms()
+        private void DrawTilesOnMap ()
         {
+            if (_map == null)
+            {
+                throw new Exception("Cant acsess map");
+            }
+            var platform = _tiles.FirstOrDefault(tile => tile.Type == TileType.Platform).Tile;
+
             for (var i = 0; i < _widthMap; i++)
             {
                 for (var j = 0; j < _heightMap; j++)
                 {
-                   //если с двух сторон от кирпича нет другого заполняй случайным кол едениц вокруг него
+                    Debug.Log("Draw");
+                    if (_map [i,j] == 1)
+                    {
+                        
+                           var positionTile = new Vector3Int(-_widthMap / 2 + i, -_heightMap / 2 + j, 0);
+                        _tilemap.SetTile(positionTile, platform);
+
+                    }
                 }
 
             }
+
         }
     }
 }
