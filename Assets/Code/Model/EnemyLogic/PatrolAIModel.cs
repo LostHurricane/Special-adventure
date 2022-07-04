@@ -16,7 +16,7 @@ namespace SpecialAdventure
         public Vector3 GetNextTarget()
         {
             if (_waypoints == null)
-                throw new System.Exception("empty array GetNextTarget");
+                Debug.LogError("empty array GetNextTarget");
 
             _currentPointIndex = (_currentPointIndex + 1) % _waypoints.Length;
             return _waypoints[_currentPointIndex];
@@ -25,7 +25,7 @@ namespace SpecialAdventure
         public Vector3 GetClosestTarget(Vector2 fromPosition)
         {
             if (_waypoints == null)
-                throw new System.Exception("empty array ClosestTarget");
+                Debug.LogError("empty array ClosestTarget");
 
 
             var closestIndex = 0;
