@@ -28,7 +28,7 @@ namespace SpecialAdventure
 
         private void OnEnable()
         {
-            _spriteRenderer.color = _defaultColor;
+           // _spriteRenderer.color = _defaultColor;
         }
 
         public void ProcessComplete()
@@ -37,7 +37,7 @@ namespace SpecialAdventure
         }
         public void ProcessActivate()
         {
-            SpriteRenderer.color = _defaultColor;
+            //SpriteRenderer.color = _defaultColor;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
