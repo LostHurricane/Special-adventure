@@ -64,7 +64,7 @@ namespace SpecialAdventure
 
        
 
-        private void PickUp(IActivator contactView, InteractiveObjectView collectible)
+        private void PickUp(IActivator contactView, ITrigger collectible)
         {
             contactView.Interract(InteractiveObjectType.Apple);
             _collectiblePool.ReturnToPool(collectible.transform);

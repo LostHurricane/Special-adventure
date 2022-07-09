@@ -7,7 +7,7 @@ namespace SpecialAdventure
 {
     public interface IQuest
     {
-        event EventHandler<IQuest> Completed;
+        public event Action<IQuest> Completed;
         bool IsCompleted { get; }
         void Reset();
     }

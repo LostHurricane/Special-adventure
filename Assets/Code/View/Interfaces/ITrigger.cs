@@ -7,7 +7,7 @@ namespace SpecialAdventure
 {
     public interface ITrigger: IView
     {
-        public Action<IActivator, InteractiveObjectView> OnLevelObjectTriggerEnter { get; set; }
+        public Action<IActivator, ITrigger> OnLevelObjectTriggerEnter { get; set; }
 
     }
 }
