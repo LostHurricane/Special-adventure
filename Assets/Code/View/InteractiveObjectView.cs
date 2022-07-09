@@ -11,7 +11,7 @@ namespace SpecialAdventure
         private SpriteRenderer _spriteRenderer;
         public SpriteRenderer SpriteRenderer => _spriteRenderer;
 
-        public Action<IActivator, InteractiveObjectView> OnLevelObjectTriggerEnter { get ; set ; }
+        public Action<IActivator, ITrigger > OnLevelObjectTriggerEnter { get ; set ; }
         
         private void OnTriggerEnter2D(Collider2D collision)
         {

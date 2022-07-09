@@ -40,10 +40,7 @@ namespace SpecialAdventure
 
         public void Clean()
         {
-            if (_tilemap != null)
-            {
-                _tilemap.ClearAllTiles();
-            }
+                _tilemap?.ClearAllTiles();   
         }
 
         private void GenerateLevel()

@@ -5,9 +5,10 @@ using UnityEngine;
 
 namespace SpecialAdventure
 {
-    public interface ITrigger: IView
+    public interface IQuest
     {
-        public Action<IActivator, ITrigger> OnLevelObjectTriggerEnter { get; set; }
-
+        public event Action<IQuest> Completed;
+        bool IsCompleted { get; }
+        void Reset();
     }
 }

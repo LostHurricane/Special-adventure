@@ -38,12 +38,12 @@ namespace SpecialAdventure
             var randomFillingPercent = serializedObject.FindProperty("_randomFillingPercent");
             EditorGUILayout.PropertyField(randomFillingPercent);
 
-            if (GUI.Button(new Rect (10, 220, 60, 50), "Generate"))
+            if (GUI.Button(new Rect (10, 220, 70, 50), "Generate"))
             {
                 _levelGeneratorController.Start();
             }
 
-            if (GUI.Button(new Rect(30, 220, 60, 50), "Generate"))
+            if (GUI.Button(new Rect(150, 220, 60, 50), "Clear"))
             {
                 _levelGeneratorController.Clean();
             }
