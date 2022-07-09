@@ -28,7 +28,7 @@ namespace SpecialAdventure
 
         private void OnEnable()
         {
-           // _spriteRenderer.color = _defaultColor;
+           _spriteRenderer.color = _defaultColor;
         }
 
         public void ProcessComplete()
@@ -44,8 +44,6 @@ namespace SpecialAdventure
         {
             if (collision.TryGetComponent <IActivator> (out var view))
             {
-                //tesing two options of events
-                OnLevelObjectTriggerEnter?.Invoke(view, this);
                 if (collision.TryGetComponent<PlayerView>(out var pview))
                 {
                     OnLevelObjectContact?.Invoke(pview);

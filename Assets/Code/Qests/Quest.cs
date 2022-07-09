@@ -19,6 +19,7 @@ namespace SpecialAdventure
         {
             _questObjectView = questObjectView;
             _model = model;
+            Debug.Log($"Quest id {questObjectView.ID} created");
         }
 
         public void Reset()
@@ -55,6 +56,8 @@ namespace SpecialAdventure
 
         private void OnContact(PlayerView view)
         {
+            Debug.Log($"{view.transform.position} here");
+
             if (_model.TryComplete(view.gameObject))
             {
                 Complete();
